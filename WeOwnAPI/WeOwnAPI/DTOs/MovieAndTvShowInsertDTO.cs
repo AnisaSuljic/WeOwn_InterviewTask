@@ -6,7 +6,7 @@ namespace WeOwnAPI.DTOs
     public class MovieAndTvShowInsertDTO
     {
         [Required]
-        [RegularExpression("^(Movie|TV Show)$", ErrorMessage = "Type must be 'Movie' or 'TVShow'.")]
+        [RegularExpression("^(Movie|TV Show)$", ErrorMessage = "Type must be 'Movie' or 'TV Show'.")]
         public string Type { get; set; } = null!;
 
         [Required]
