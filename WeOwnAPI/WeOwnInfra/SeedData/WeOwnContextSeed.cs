@@ -36,7 +36,7 @@ namespace WeOwnInfra.SeedData
                     _context.SaveChanges();
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
 
                 throw new Exception("Something went wrong with your request");

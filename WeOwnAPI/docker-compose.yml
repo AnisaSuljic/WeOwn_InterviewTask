@@ -1,0 +1,37 @@
+version: '3'
+
+services:
+  weownapi-sql:
+    image: mcr.microsoft.com/mssql/server:2017-latest-ubuntu
+    restart: unless-stopped
+    environment:
+      - ACCEPT_EULA=Y
+      - SA_PASSWORD=QWElkj132!
+      - MSSQL_PID=Developer
+    ports:
+      - 1401:1433
+    expose:
+        - 1433
+    networks:
+      - weownapinet
+
+    
+  weownapi-api:
+    restart: unless-stopped
+    build: 
+      context: .
+      dockerfile: Dockerfile
+    environment:
+      - ConnectionStrings:DefaultConnection=Server=weownapi-sql,1433;Database=WeOwntest;User=sa;Password=QWElkj132!;ConnectRetryCount=0
+    ports:
+      - 7025:7025
+    networks:
+      - weownapinet
+    links:
+      - weownapi-sql
+    depends_on:
+      - weownapi-sql
+
+networks:
+  weownapinet:
+    driver: bridge

@@ -12,7 +12,6 @@ namespace WeOwnInfra.SeedData
     {
         public CsvHeaderMap()
         {
-            Map(m => m.Id).Name("id");
             Map(m => m.ShowId).Name("show_id");
             Map(m => m.Type).Name("type");
             Map(m => m.Title).Name("title");
